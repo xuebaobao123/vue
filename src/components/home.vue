@@ -1,0 +1,3 @@
+<template>
+   <h2>我是home页面</h2>
+</template>
