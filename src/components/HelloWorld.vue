@@ -2,13 +2,22 @@
     <form @submit.prevent="sumbit">
         <div class="divForm">
            <span>用户名:</span>
-           <input type="text" v-model="formDate.name"></input>
+           <el-input
+                placeholder="请输入内容"
+                v-model="formDate.name"
+                clearable>
+            </el-input>
         </div>
         <div class="divForm">
             <span>密码:</span>
-           <input type="password" v-model="formDate.password"></input>
+            <el-input
+                show-password
+                placeholder="请输入内容"
+                v-model="formDate.password"
+                clearable>
+            </el-input>
         </div>
-        <button type="sumbit">提交</button>
+        <button type="primary">提交</button>
     </form>
 </template>
 <script>
@@ -40,7 +49,7 @@
                         path: '/home',
                         query:{
                             userName:"1"
-                            }
+                        }
                     })
                 }
                 
@@ -51,6 +60,9 @@
    }
 </script>
 <style>
+    .el-input__icon{
+        line-height:30px !important;
+    }
     .divForm span{
         width: 48px;
         display: inline-block;
@@ -60,21 +72,26 @@
     .divForm input{
         border:1px solid #bcbfbf;
         width:130px;
+        height:30px;
+        line-height:30px;
     }
     .divForm{
         font-size:18px;
         margin-top:10px;
     }
     button{
-        background:#07a2be;
+        background:#409EFF;
         border-radius:4px;
         color:white;
         border:none;
-        width:100px;
+        width:143px;
         margin:0 auto;
-        height:26px;
-        line-height:26px;
+        height:30px;
+        line-height:30px;
         margin-top:10px;
+    }
+    .el-input{
+        width:50% !important;
     }
     form{
         width:300px;

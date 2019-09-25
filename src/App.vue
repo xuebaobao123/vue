@@ -16,7 +16,7 @@ export default {
 
 <style>
    .a{
-     margin:200px auto 20px;
+     margin:20px auto;
      width:69px;
      display:block;
    }
