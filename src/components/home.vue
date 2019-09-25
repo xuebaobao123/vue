@@ -1,8 +1,8 @@
 <template>
      <div id="app">
-         <ul>
-            <li v-for="(item,key) in shuju" v-html="item">{{item}}</li>
-         </ul>
+         <!-- <ul>
+            <li>{{shuju}}</li>
+         </ul> -->
         <!-- <el-container style="height: 500px; border: 1px solid #eee;">
          <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
             <el-menu :default-openeds="['1', '3']" >
@@ -47,17 +47,21 @@ export default {
       };
       return{
          menuList:[
-            {id:1,name:'菜单1',url:'',pId:0},
-            {id:10,name:'菜单1-1',url:'',pId:1},
-            {id:100,name:'菜单1-1-1',url:'',pId:10},
-            {id:101,name:'菜单1-1-2',url:'',pId:10},
-            {id:11,name:'菜单1-2',url:'',pId:1},
-            {id:13,name:'菜单1-3',url:'',pId:1},
-            {id:2,name:'菜单2',url:'',pId:0},
-            {id:20,name:'菜单2-1',url:'',pId:2},
-            {id:21,name:'菜单2-2',url:'',pId:2},
-            {id:3,name:'菜单3',url:'',pId:0},
-            {id:30,name:'菜单3-1',url:'',pId:3},
+            {id:1,name:'菜单1',url:'',child:[
+            {id:10,name:'菜单1-1',url:'',child:[
+            {id:100,name:'菜单1-1-1',url:''},
+            {id:101,name:'菜单1-1-2',url:''},
+            ]},
+            {id:11,name:'菜单1-2',url:''},
+            {id:13,name:'菜单1-3',url:''},
+            ]},
+            {id:2,name:'菜单2',url:'',child:[
+            {id:20,name:'菜单2-1',url:''},
+            {id:21,name:'菜单2-2',url:''},
+            ]},
+             {id:3,name:'菜单3',url:'',child:[
+            {id:30,name:'菜单3-1',url:''},
+            ]},        
          ],
           userMenu:[
             {
@@ -79,20 +83,15 @@ export default {
          var userMenu=this.userMenu[this.$route.query.userName].menuList;
          var forFn = function(arr, id,lev){
             for (var i = 0; i < arr.length; i++) {
-               var item = arr[i];
-               if (item.pId==id) {
-                  item.lev=lev;
-                  let have = false;
-                   for(let j=0;j<userMenu.length;j++){
-                     if(userMenu[j]==item.id){
-                         have = true;
-                         break; 
-                     }
-                  }
-                  if(have)
-                     temp.push(item);
-                  forFn(arr,item.id,lev+1);
-               }
+               var item=arr[i]
+               // if(item.child&&item.child.length>0){
+               //     temp.push("<li>"+item.name+"</li>")
+               // }
+               // else{
+               //    return temp.push("<ul><li>"+item.name+"</li></ul>")
+               // }
+               console.log(item.id)
+               forFn(arr,item.id,lev+1);
             }
          };
       forFn(arr, id,lev);
@@ -121,9 +120,9 @@ export default {
 </script>
 <style>
     .el-header {
-    background-color: #B3C0D1;
-    color: #333;
-    line-height: 60px;
+      background-color: #B3C0D1;
+      color: #333;
+      line-height: 60px;
   }
   
   .el-aside {
