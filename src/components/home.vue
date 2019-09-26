@@ -1,41 +1,66 @@
 <template>
-     <div id="app">
-         <!-- <ul>
-            <li>{{shuju}}</li>
-         </ul> -->
-        <!-- <el-container style="height: 500px; border: 1px solid #eee;">
-         <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-            <el-menu :default-openeds="['1', '3']" >
-               <el-submenu index="1">
+   <el-container style="height: 500px; border: 1px solid #eee">
+      <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
+         <el-menu :default-openeds="['1', '3']">
+               <!-- <el-submenu>
+                     <template slot="title">菜单1</template>
+                     <el-submenu>
+                        <template slot="title"> 菜单1-1</template>
+                     <el-submenu>
+                     <el-submenu>
+                        <template slot="title">菜单1-1-1</template>
+                        <el-menu-item> 菜单1-1-1</el-menu-item>
+                     </el-submenu>
+                     <el-submenu>
+                        <template slot="title">菜单1-1-2</template>
+                        <el-menu-item>菜单1-1-2</el-menu-item>
+                     </el-submenu>
+               </el-submenu>    -->
+         </el-menu>
+         <el-menu :default-openeds="['1', '3']">
+              <el-submenu index="1">
+                  <template slot="title"><i class="el-icon-message"></i>导航一</template>
+                  <template slot="title">选项4</template>
+                     <!-- <el-submenu index="2-4-1-1">
+                        <template slot="title">选项4sss</template>
+                        <el-menu-item index="2-4-1-1-1">选项4-sss1</el-menu-item>
+                     </el-submenu> -->
+                  <el-submenu index="2-4">
+                     <template slot="title">选项5</template>
+                     <!-- <el-submenu index="2-4-1-1">
+                        <template slot="title">选项4sss</template>
+                        <el-menu-item index="2-4-1-1-1">选项4-sss1</el-menu-item>
+                     </el-submenu> -->
+                  </el-submenu>
                </el-submenu>
-            </el-menu>
-         </el-aside>
-         <el-container>
-            <el-header style="text-align: right; font-size: 12px">
-               <el-dropdown>
-               <i class="el-icon-setting" style="margin-right: 15px"></i>
-               <el-dropdown-menu slot="dropdown">
-                  <el-dropdown-item>查看</el-dropdown-item>
-                  <el-dropdown-item>新增</el-dropdown-item>
-                  <el-dropdown-item>删除</el-dropdown-item>
-               </el-dropdown-menu>
-               </el-dropdown>
-               <span>王小虎</span>
-            </el-header>
-            <el-main>
-               <el-table :data="tableData">
-               <el-table-column prop="date" label="日期" width="140">
-               </el-table-column>
-               <el-table-column prop="name" label="姓名" width="120">
-               </el-table-column>
-               <el-table-column prop="address" label="地址">
-               </el-table-column>
-               </el-table>
-            </el-main>
-         </el-container>
-         </el-container> -->
-     </div>
-      
+         </el-menu>
+      </el-aside>
+      <el-container>
+         <el-header style="text-align: right; font-size: 12px">
+            <el-dropdown>
+            <i class="el-icon-setting" style="margin-right: 15px"></i>
+            <el-dropdown-menu slot="dropdown">
+               <el-dropdown-item>查看</el-dropdown-item>
+               <el-dropdown-item>新增</el-dropdown-item>
+               <el-dropdown-item>删除</el-dropdown-item>
+            </el-dropdown-menu>
+            </el-dropdown>
+            <span>王小虎</span>
+         </el-header>
+         
+         <el-main>
+            <el-table :data="tableData">
+            <el-table-column prop="date" label="日期" width="140">
+            </el-table-column>
+            <el-table-column prop="name" label="姓名" width="120">
+            </el-table-column>
+            <el-table-column prop="address" label="地址">
+            </el-table-column>
+            </el-table>
+         </el-main>
+      </el-container>
+      </el-container>
+
 </template>  
 <script>
 export default {
@@ -46,23 +71,6 @@ export default {
         address: '上海市普陀区金沙江路 1518 弄'
       };
       return{
-         menuList:[
-            {id:1,name:'菜单1',url:'',child:[
-            {id:10,name:'菜单1-1',url:'',child:[
-            {id:100,name:'菜单1-1-1',url:''},
-            {id:101,name:'菜单1-1-2',url:''},
-            ]},
-            {id:11,name:'菜单1-2',url:''},
-            {id:13,name:'菜单1-3',url:''},
-            ]},
-            {id:2,name:'菜单2',url:'',child:[
-            {id:20,name:'菜单2-1',url:''},
-            {id:21,name:'菜单2-2',url:''},
-            ]},
-             {id:3,name:'菜单3',url:'',child:[
-            {id:30,name:'菜单3-1',url:''},
-            ]},        
-         ],
           userMenu:[
             {
                userName:'user1',
@@ -73,59 +81,62 @@ export default {
                menuList:[1,10,100,101,11,2,20,3,30]
             }
          ],
-         shuju:[],
-         tableData: Array(20).fill(item)
+         shuju:'',
+         tableData: Array(20).fill(item),
+         menuList:[
+            {id:1,name:'菜单1',url:'',child:[
+               {id:10,name:'菜单1-1',url:'',child:[
+                  {id:100,name:'菜单1-1-1',url:''},
+                  {id:101,name:'菜单1-1-2',url:''},
+                ]
+               },
+               {id:11,name:'菜单1-2',url:''},
+               {id:13,name:'菜单1-3',url:''},
+			  ]},
+            {id:2,name:'菜单2',url:'',child:[
+               {id:20,name:'菜单2-1',url:''},
+               {id:21,name:'菜单2-2',url:''},
+			  ]},
+            {id:3,name:'菜单3',url:'',child:[
+               {id:30,name:'菜单3-1',url:''},
+			  ]},        
+         ],
       }
    },
     methods:{
-      sonsTree(arr,id){
-         var temp = [],lev=0;
-         var userMenu=this.userMenu[this.$route.query.userName].menuList;
-         var forFn = function(arr, id,lev){
-            for (var i = 0; i < arr.length; i++) {
-               var item=arr[i]
-               // if(item.child&&item.child.length>0){
-               //     temp.push("<li>"+item.name+"</li>")
-               // }
-               // else{
-               //    return temp.push("<ul><li>"+item.name+"</li></ul>")
-               // }
-               console.log(item.id)
-               forFn(arr,item.id,lev+1);
+      creatMenu(arr){
+         var temp = "";
+         for(var i=0;i<arr.length;i++){
+            if(arr[i].child && arr[i].child.length>0){
+               temp+="<template slot='title'>"+arr[i].name+"</template>"
+               temp+=this.creatMenu(arr[i].child)
+             }
+             else{
+                temp+="<el-submenu><template slot='title'>"+arr[i].name+"</template>"
+               temp+="<el-menu-item>"+arr[i].name+"</el-menu-item></el-submenu>"
             }
-         };
-      forFn(arr, id,lev);
+         }
          return temp;
       }
-   },
+    },
    mounted() { 
-      var tree = this.sonsTree(this.menuList,0);
-      for(var i=0;i<tree.length;i++){
-            var item = tree[i];
-            let spaceS = "";
-            if(i>0){
-               spaceS = "</ul>";
-         }
-         if(item.lev==0){
-             this.shuju.push(spaceS+'<li><a class="one">'+item.name+'</a></li><ul>');
-         }else{
-             this.shuju.push('<li><a>'+item.name+'</a></li>')
-         }
-         if(i+1==tree.length){
-             this.shuju.push("</ul>")
-         }
-      }
+      var temp="";
+      var tree = this.creatMenu(this.menuList);
+      this.shuju+="<el-submenu>"+tree+"</el-submenu>";
+      console.log(this.shuju)
    },
 }
 </script>
 <style>
     .el-header {
-      background-color: #B3C0D1;
-      color: #333;
-      line-height: 60px;
+    background-color: #B3C0D1;
+    color: #333;
+    line-height: 60px;
   }
-  
   .el-aside {
     color: #333;
+  }
+  .ziji{
+     margin-left:30px;;
   }
 </style>
